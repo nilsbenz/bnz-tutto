@@ -1,5 +1,5 @@
-import Home from '@/components/Home';
-import PageNotFound from '@/components/PageNotFound';
+import Home from '../components/Home.vue';
+import PageNotFound from '../components/PageNotFound.vue';
 import Vue from 'vue';
 import Router from 'vue-router';
 

@@ -15,10 +15,12 @@ h1 {
 }
 </style>
 
-<script>
-import store from '@/store/store';
+<script lang="ts">
+import store from '../store/store';
+import Vue from 'vue';
 
-export default {
+export default Vue.extend({
+  name: 'Home',
   computed: {
     players() {
       return store.state.players;
@@ -30,10 +32,10 @@ export default {
     };
   },
   methods: {
-    addPlayer(newPlayer) {
+    addPlayer(newPlayer: string) {
       store.commit('addPlayer', newPlayer);
       this.newPlayer = '';
     },
   },
-};
+});
 </script>
