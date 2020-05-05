@@ -1,0 +1,21 @@
+import Home from '@/components/Home';
+import PageNotFound from '@/components/PageNotFound';
+import Vue from 'vue';
+import Router from 'vue-router';
+
+Vue.use(Router);
+
+export default new Router({
+  routes: [
+    {
+      path: '/',
+      name: 'Home',
+      component: Home,
+    },
+    {
+      path: '**',
+      name: 'PageNotFound',
+      component: PageNotFound,
+    },
+  ],
+});

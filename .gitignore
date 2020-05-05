@@ -63,3 +63,7 @@ typings/
 dist
 
 .firebase
+
+.local
+
+.DS_Store
