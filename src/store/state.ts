@@ -5,7 +5,10 @@ const state: AppState = {
   cards: [],
   currentPlayer: null,
   currentCard: null,
-  message: null,
+  messages: {
+    addPlayerError: null,
+    startGameError: null,
+  },
 };
 
 export default state;

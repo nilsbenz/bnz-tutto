@@ -23,9 +23,18 @@ export const cards: Card[] = [...streets, ...stops, shamrock];
 
 export const shuffle = (cards: Card[]): Card[] => {
   const array: Card[] = [...cards];
-  for (let i = array.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [array[i], array[j]] = [array[j], array[i]];
+  let currentIndex = array.length;
+  let temporaryValue;
+  let randomIndex;
+
+  while (currentIndex !== 0) {
+    randomIndex = Math.floor(Math.random() * currentIndex);
+    currentIndex -= 1;
+
+    temporaryValue = array[currentIndex];
+    array[currentIndex] = array[randomIndex];
+    array[randomIndex] = temporaryValue;
   }
+
   return array;
 };
