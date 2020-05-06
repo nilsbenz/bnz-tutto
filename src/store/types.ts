@@ -9,9 +9,9 @@ export interface Card {
   icon: string;
 }
 
-export interface Message {
-  text: string;
-  type: 'success' | 'info' | 'error' | 'warning';
+export interface Messages {
+  addPlayerError: string | null;
+  startGameError: string | null;
 }
 
 export interface AppState {
@@ -19,5 +19,5 @@ export interface AppState {
   cards: Card[];
   currentPlayer: string | null;
   currentCard: number | null;
-  message: Message | null;
+  messages: Messages;
 }

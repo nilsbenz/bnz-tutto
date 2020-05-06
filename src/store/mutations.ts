@@ -3,16 +3,16 @@ import { AppState } from './types';
 
 export default {
   addPlayer(state: AppState, playerName: string) {
-    if (state.players.findIndex((p) => p.name === playerName) === -1) {
+    if (playerName === '') {
+      state.messages.addPlayerError = 'Bitte gib einen Namen an.';
+    } else if (state.players.findIndex((p) => p.name === playerName) === -1) {
       state.players.push({
         name: playerName,
         score: 0,
       });
+      state.messages.addPlayerError = null;
     } else {
-      state.message = {
-        type: 'error',
-        text: `Der Name ${playerName} ist bereits vergeben.`,
-      };
+      state.messages.addPlayerError = `Der Name ${playerName} ist bereits vergeben.`;
     }
   },
   deletePlayer(state: AppState, playerName: string) {
@@ -37,21 +37,15 @@ export default {
     }
   },
   startGame(state: AppState) {
-    if (state.players.length >= 2) {
-      state.cards = shuffle(cards);
-      state.currentPlayer = state.players[0].name;
-    } else {
-      state.message = {
-        type: 'error',
-        text: 'Es müssen mindestens zwei Spieler hinzugefügt werden.',
-      };
-    }
+    state.cards = shuffle(cards);
+    state.currentPlayer = state.players[0].name;
+    state.messages.startGameError = null;
   },
   nextCard(state: AppState) {
     if (state.currentCard && state.cards.length > state.currentCard + 1) {
       state.currentCard++;
     } else {
-      state.cards = shuffle(cards);
+      state.cards = shuffle(shuffle(cards));
       state.currentCard = 0;
     }
   },
