@@ -1,7 +1,7 @@
 <template>
   <div>
     <h1>Tutto</h1>
-    <p v-for="player in players" :key="player">{{ player }}</p>
+    <p v-for="player in players" :key="player.name">{{ player.name }}</p>
     <input v-model="newPlayer" />
     <button v-on:click="addPlayer(newPlayer)">
       Add Player
