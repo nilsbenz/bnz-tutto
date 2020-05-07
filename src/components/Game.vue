@@ -7,7 +7,7 @@
         <v-icon>mdi-exit-to-app</v-icon>
       </v-btn>
     </v-toolbar>
-    <v-container>
+    <v-container class="container">
       <v-row>
         <v-col cols="12" sm="6">
           <transition name="slide-fade" mode="out-in">
@@ -32,7 +32,7 @@
               </div>
             </v-card>
           </transition>
-          <v-btn block outlined v-on:click="nextCard()">
+          <v-btn block outlined v-on:click="nextCard()" class="mt-10">
             Nächste Karte <v-icon right>mdi-chevron-right</v-icon>
           </v-btn>
         </v-col>
@@ -63,6 +63,9 @@
 </template>
 
 <style scoped>
+.container {
+  max-width: 800px;
+}
 .space-between {
   display: flex;
   justify-content: space-between;
