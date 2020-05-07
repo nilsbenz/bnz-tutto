@@ -11,20 +11,20 @@
         outlined
         type="text"
       >
-        <template v-slot:append>
+        <template v-slot:append-outer>
           <v-btn icon v-on:click="addPlayer(newPlayer)" style="top: -6px">
             <v-icon>mdi-plus</v-icon>
           </v-btn>
         </template>
       </v-text-field>
-      <v-list v-for="player in players" :key="player.name" dense>
-        <v-list-item>
-          <v-list-item-content>{{ player.name }}</v-list-item-content>
-          <v-list-item-action class="list-item-action">
-            <v-btn icon>
-              <v-icon v-on:click="deletePlayer(player.name)">mdi-delete</v-icon>
-            </v-btn>
-          </v-list-item-action>
+      <v-list>
+        <v-list-item v-for="player in players" :key="player.name">
+          <p class="ma-0 flex-grow">
+            {{ player.name }}
+          </p>
+          <v-btn icon>
+            <v-icon v-on:click="deletePlayer(player.name)">mdi-delete</v-icon>
+          </v-btn>
         </v-list-item>
       </v-list>
       <v-btn
@@ -49,6 +49,9 @@
 .start-game-button {
   margin-top: 16px;
   width: 100%;
+}
+.flex-grow {
+  flex-grow: 1;
 }
 </style>
 
