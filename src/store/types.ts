@@ -1,12 +1,14 @@
 export interface Player {
   name: string;
-  score: number;
+  score: number[];
 }
 
 export interface Card {
   displayName: string;
-  prize: number | null;
+  price: string | number | null;
   icon: string;
+  color: string;
+  backgroundColor: string;
 }
 
 export interface Messages {
@@ -17,7 +19,6 @@ export interface Messages {
 export interface AppState {
   players: Player[];
   cards: Card[];
-  currentPlayer: string | null;
   currentCard: number | null;
   messages: Messages;
 }
