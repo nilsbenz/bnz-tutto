@@ -6,7 +6,6 @@ const state: AppState = {
   currentCard: null,
   messages: {
     addPlayerError: null,
-    startGameError: null,
   },
 };
 
