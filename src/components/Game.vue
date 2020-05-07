@@ -9,7 +9,7 @@
     </v-toolbar>
     <v-container>
       <v-row>
-        <v-col>
+        <v-col cols="12" sm="6">
           <transition name="slide-fade" mode="out-in">
             <v-card
               class="pa-4 my-4 card"
@@ -32,17 +32,11 @@
               </div>
             </v-card>
           </transition>
-        </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
           <v-btn block outlined v-on:click="nextCard()">
             Nächste Karte <v-icon right>mdi-chevron-right</v-icon>
           </v-btn>
         </v-col>
-      </v-row>
-      <v-row>
-        <v-col>
+        <v-col cols="12" sm="6">
           <v-list dense>
             <v-list-item
               v-for="player in players"
