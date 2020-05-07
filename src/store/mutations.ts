@@ -19,9 +19,17 @@ export default {
   deletePlayer(state: AppState, playerName: string) {
     state.players = state.players.filter((p) => p.name !== playerName);
   },
-  startGame(state: AppState) {
+  newGame(state: AppState) {
     state.cards = shuffle(cards);
     state.currentCard = 0;
+    state.players = state.players.map((p) => ({
+      ...p,
+      score: [],
+    }));
+    state.messages.startGameError = null;
+    router.push('/game');
+  },
+  continueGame(state: AppState) {
     state.messages.startGameError = null;
     router.push('/game');
   },

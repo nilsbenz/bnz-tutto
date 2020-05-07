@@ -31,6 +31,7 @@
             :error-messages="writePointsError"
             outlined
             dense
+            autofocus
           />
         </v-card-text>
         <v-card-actions>
