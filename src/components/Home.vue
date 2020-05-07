@@ -3,7 +3,7 @@
     <v-toolbar dark flat color="primary">
       <v-toolbar-title>Tutto</v-toolbar-title>
     </v-toolbar>
-    <v-container class="pt-12">
+    <v-container class="pt-12 container">
       <v-row dense>
         <v-col>
           <v-text-field
@@ -68,6 +68,9 @@
 </template>
 
 <style scoped>
+.container {
+  max-width: 350px;
+}
 .list-item-action {
   margin: 0 0 0 8px;
 }

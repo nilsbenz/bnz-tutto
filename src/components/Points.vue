@@ -1,6 +1,6 @@
 <template>
   <v-row justify="center" v-if="open">
-    <v-dialog v-model="open" persistent max-width="600px">
+    <v-dialog v-model="open" persistent max-width="350px">
       <v-card>
         <v-card-title>
           <h4 class="flex-grow">{{ player && player.name }}</h4>
