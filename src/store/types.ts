@@ -13,7 +13,6 @@ export interface Card {
 
 export interface Messages {
   addPlayerError: string | null;
-  startGameError: string | null;
 }
 
 export interface AppState {

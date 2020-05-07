@@ -17,8 +17,13 @@
             dense
             v-if="player.score.length > 0"
             class="overflow-y-auto mb-6 score"
+            dark
           >
-            <v-list-item v-for="(value, index) in player.score" :key="index">
+            <v-list-item
+              v-for="(value, index) in player.score"
+              :key="index"
+              class="score-list-item"
+            >
               <p class="ma-0">
                 {{ value }}
               </p>
@@ -27,7 +32,7 @@
           <v-text-field
             type="number"
             v-model="amount"
-            label="Punkte"
+            label="Punkte hinzufügen"
             :error-messages="writePointsError"
             outlined
             dense
@@ -54,6 +59,9 @@
 }
 .score {
   max-height: 40vh;
+}
+.score-list-item {
+  min-height: 30px !important;
 }
 </style>
 
@@ -86,7 +94,7 @@ export default Vue.extend({
         this.writePointsError = '';
         this.closeDialog();
       } else {
-        this.writePointsError = 'Gib eine zweistellige Zahl ein.';
+        this.writePointsError = 'Gib eine Ganzzahl > 9 ein.';
       }
     },
   },

@@ -26,11 +26,11 @@ export default {
       ...p,
       score: [],
     }));
-    state.messages.startGameError = null;
+    state.messages.addPlayerError = null;
     router.push('/game');
   },
   continueGame(state: AppState) {
-    state.messages.startGameError = null;
+    state.messages.addPlayerError = null;
     router.push('/game');
   },
   nextCard(state: AppState) {

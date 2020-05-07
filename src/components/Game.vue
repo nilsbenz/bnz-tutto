@@ -43,7 +43,6 @@
       </v-row>
       <v-row>
         <v-col>
-          <h2 class="my-2">Punkte</h2>
           <v-list dense>
             <v-list-item
               v-for="player in players"

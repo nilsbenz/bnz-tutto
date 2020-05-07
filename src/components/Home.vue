@@ -41,7 +41,7 @@
       </v-row>
       <v-row dense class="mt-6" v-if="players.length >= 2">
         <v-col v-if="gameRunning">
-          <v-btn color="primary" v-on:click="continueGame()" block outlined>
+          <v-btn v-on:click="continueGame()" block outlined>
             Weiter <v-icon right>mdi-chevron-right</v-icon>
           </v-btn>
         </v-col>
@@ -54,6 +54,13 @@
           >
             Neues Spiel <v-icon right>mdi-rocket</v-icon>
           </v-btn>
+        </v-col>
+      </v-row>
+      <v-row v-else>
+        <v-col>
+          <v-alert type="info" class="mt-6">
+            Füge mindestens zwei Spieler hinzu, um ein Spiel starten zu können.
+          </v-alert>
         </v-col>
       </v-row>
     </v-container>
