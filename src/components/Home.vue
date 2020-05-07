@@ -1,54 +1,68 @@
 <template>
   <div>
-    <v-toolbar dark color="primary">
+    <v-toolbar dark flat color="primary">
       <v-toolbar-title>Tutto</v-toolbar-title>
     </v-toolbar>
-    <div class="container">
-      <v-text-field
-        :error-messages="addPlayerError"
-        label="Spieler hinzufügen"
-        v-model="newPlayer"
-        outlined
-        type="text"
-      >
-        <template v-slot:append-outer>
-          <v-btn icon v-on:click="addPlayer(newPlayer)" style="top: -6px">
-            <v-icon>mdi-plus</v-icon>
+    <v-container class="pt-12">
+      <v-row dense>
+        <v-col>
+          <v-text-field
+            :error-messages="addPlayerError"
+            label="Spieler hinzufügen"
+            v-model="newPlayer"
+            outlined
+            type="text"
+            dense
+            autofocus
+          >
+            <template v-slot:append-outer>
+              <v-btn icon v-on:click="addPlayer(newPlayer)" style="top: -6px">
+                <v-icon>mdi-plus</v-icon>
+              </v-btn>
+            </template>
+          </v-text-field>
+        </v-col>
+      </v-row>
+      <v-row dense>
+        <v-col>
+          <v-list dense>
+            <v-list-item v-for="player in players" :key="player.name">
+              <p class="ma-0 flex-grow">
+                {{ player.name }}
+              </p>
+              <v-btn icon>
+                <v-icon v-on:click="deletePlayer(player.name)"
+                  >mdi-delete</v-icon
+                >
+              </v-btn>
+            </v-list-item>
+          </v-list>
+        </v-col>
+      </v-row>
+      <v-row dense class="mt-6" v-if="players.length >= 2">
+        <v-col v-if="gameRunning">
+          <v-btn color="primary" v-on:click="continueGame()" block outlined>
+            Weiter <v-icon right>mdi-chevron-right</v-icon>
           </v-btn>
-        </template>
-      </v-text-field>
-      <v-list>
-        <v-list-item v-for="player in players" :key="player.name">
-          <p class="ma-0 flex-grow">
-            {{ player.name }}
-          </p>
-          <v-btn icon>
-            <v-icon v-on:click="deletePlayer(player.name)">mdi-delete</v-icon>
+        </v-col>
+        <v-col>
+          <v-btn
+            color="primary"
+            v-on:click="newGame()"
+            block
+            v-if="players.length >= 2"
+          >
+            Neues Spiel <v-icon right>mdi-rocket</v-icon>
           </v-btn>
-        </v-list-item>
-      </v-list>
-      <v-btn
-        color="primary"
-        v-on:click="startGame()"
-        class="start-game-button"
-        v-if="players.length >= 2"
-      >
-        Spiel starten
-      </v-btn>
-    </div>
+        </v-col>
+      </v-row>
+    </v-container>
   </div>
 </template>
 
 <style scoped>
-.container {
-  padding: 24px 12px 12px;
-}
 .list-item-action {
   margin: 0 0 0 8px;
-}
-.start-game-button {
-  margin-top: 16px;
-  width: 100%;
 }
 .flex-grow {
   flex-grow: 1;
@@ -68,6 +82,9 @@ export default Vue.extend({
     addPlayerError() {
       return store.state.messages.addPlayerError;
     },
+    gameRunning() {
+      return store.state.currentCard !== null;
+    },
   },
   data() {
     return {
@@ -82,8 +99,11 @@ export default Vue.extend({
     deletePlayer(name: string) {
       store.commit('deletePlayer', name);
     },
-    startGame() {
-      store.commit('startGame');
+    newGame() {
+      store.commit('newGame');
+    },
+    continueGame() {
+      store.commit('continueGame');
     },
   },
 });

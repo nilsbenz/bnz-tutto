@@ -1,14 +1,18 @@
 <template>
   <div>
-    <v-toolbar dark color="primary">
+    <v-toolbar dark flat color="primary">
       <v-toolbar-title>Tutto</v-toolbar-title>
+      <v-spacer />
+      <v-btn icon @click="goHome()">
+        <v-icon>mdi-exit-to-app</v-icon>
+      </v-btn>
     </v-toolbar>
     <v-container>
       <v-row>
         <v-col>
           <transition name="slide-fade" mode="out-in">
             <v-card
-              class="pa-2 my-4 card"
+              class="pa-4 my-4 card"
               v-bind:style="{
                 backgroundColor: currentCard.backgroundColor,
                 border: `medium solid ${currentCard.color}`,
@@ -17,14 +21,14 @@
               elevation="12"
             >
               <div class="center">
-                <h3>{{ currentCard.displayName }}</h3>
+                <h1>{{ currentCard.displayName }}</h1>
               </div>
               <div class="space-between card-detail">
-                <h4>{{ currentCard.price }}</h4>
+                <h2>{{ currentCard.price }}</h2>
                 <v-icon :color="currentCard.color" x-large>
                   {{ currentCard.icon }}
                 </v-icon>
-                <h4>{{ currentCard.price }}</h4>
+                <h2>{{ currentCard.price }}</h2>
               </div>
             </v-card>
           </transition>
@@ -80,7 +84,7 @@
   justify-content: center;
 }
 .card-detail {
-  margin: 32px 0;
+  margin: 48px 0;
 }
 .flex-grow {
   flex-grow: 1;
@@ -106,6 +110,7 @@ import Vue from 'vue';
 import store from '../store/store';
 import Points from './Points.vue';
 import { Player } from '../store/types';
+import router from '../plugins/router';
 
 export default Vue.extend({
   name: 'Game',
@@ -149,6 +154,9 @@ export default Vue.extend({
     setWritePoints(player: string | null) {
       this.writePoints =
         store.state.players.find((p) => p.name === player) || null;
+    },
+    goHome() {
+      router.push('/');
     },
   },
 });
